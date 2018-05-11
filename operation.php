@@ -5,6 +5,8 @@ $ad = isset($_POST['ad']) ? $_POST['ad'] : '';
 $soyad = isset($_POST['soyad']) ? $_POST['soyad'] : '';
 $adres = isset($_POST['adres']) ? $_POST['adres'] : '';
 $tur = isset($_POST['tur']) ? $_POST['tur'] : '';
+$id=isset($_POST['tur']) ? $_POST['tur'] : '';
+
 
 
 if(isset($_POST["insert"])){
@@ -28,8 +30,9 @@ if(isset($_POST["insert"])){
 if(isset($_POST["sil"])){
     
     try {
-        $sql = "DELETE FROM kisiler WHERE id=12";            
+        $sql = "DELETE FROM kisiler WHERE id=18";            
         $conn->exec($sql);  
+       
         }
     catch(PDOException $e)
         {
@@ -39,6 +42,25 @@ if(isset($_POST["sil"])){
     exit;
     }
     
+    if(isset($_POST["coklusil"])){
+    
+        try {
+            
+            $silinecekler = implode(', ', $_POST['cb']);
+            $sql="DELETE FROM kisiler WHERE id IN ( ' . $silinecekler . ' )";
+            $conn->exec($sql); 
+            
+               
+            
+            }
+        catch(PDOException $e)
+            {
+            echo $sql . "<br>" . $e->getMessage();
+            }
+            header("location: index.php");
+        exit;
+        }
+     
 
 if(isset($_POST["update"])){
     

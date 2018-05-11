@@ -13,7 +13,9 @@ header('Content-type: text/html; charset=UTF-8');
         $donen= $select->fetchAll(PDO::FETCH_ASSOC);
         $conn=null;  
         echo json_encode($donen);
+        
         }
+        
     catch(PDOException $e)
         {
         echo $sql . "<br>" . $e->getMessage();

@@ -11,28 +11,16 @@ $(document).ready(function () {
             success: function(data){
                 data = JSON.parse(data);
                 $.each(data, function(i, data){
-                    $tablo.append("<tr><td><input type='checkbox'  value="+i+"/>" + data.ad + "</td><td>" + data.soyad + "</td></tr>");        
+                    $tablo.append("<tr><td><input type='checkbox' name='cb[]'value="+data.id+"></td><td>" + data.ad + "</td><td>" + data.soyad + "</td><td>" + data.adres + "</td><td>" + data.tur + "</td></tr>");        
                })  
             },
             error: function () {
                 alert('bişeyler oldu ama ben de anlamadım')
             }
         });
-        $("#buton").click(function(){
-            
-            var $inputElements = $('input[type="checkbox"]');
-            $inputElements.each(function () {
-                if($(this).is(':checked')){
-                    $checkedValues.push($(this).attr("id"));
-                    alert($checkedValues);
-                }
-                
-            });    
-        });
-  
-    });  
+        
     
     
     
          
-});
+})});
